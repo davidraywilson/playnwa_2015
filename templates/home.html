@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+
+{% block extra-head %}
+
+    <link href='{{ STATIC_URL }}css/home.css' type='text/css' rel='stylesheet'>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div id='main-feature' class='parallax-container valign-wrapper'>
+
+        <div class="section no-pad-bot">
+
+            <div class="container">
+
+                <div class="row center">
+                    <h1 class="header col s12 light" style='margin-bottom: 40px;'>
+                        Your Adventure Starts Here
+                    </h1>
+
+                    <a href='/' class='btn-large waves-effect waves-light deep-purple lighten-2 z-depth-5'>Get Started</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="parallax"><img src="{{ STATIC_URL }}images/place_holders/crystal_bridges.jpg" alt="Unsplashed background img 3"></div>
+
+    </div>
+
+    <div style='clear: both'></div>
+
+    <div class="container">
+
+        <div class="section">
+
+            <!--   Icon Section   -->
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center">
+                            <a class='deep-purple-text text-darken-1' href='#'><i class="mdi-maps-local-restaurant"></i></a>
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center">
+                            <a class='deep-purple-text text-darken-1' href='#'><i class="mdi-av-play-circle-fill"></i></a>
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center">
+                            <a class='deep-purple-text text-darken-1' href='#'><i class="mdi-maps-local-hotel"></i></a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="small-feature parallax-container valign-wrapper">
+
+        <div class="section no-pad-bot">
+
+            <div class="container">
+                <div class="row center">
+
+                    <h2 class='center icon'><i class='mdi-social-whatshot'></i></h2>
+                    <h4 class="header col s12 light">
+                       Hogs baseball is finally here!
+                    </h4>
+                    <a href='/' class='btn waves-effect waves-light deep-purple lighten-2 z-depth-5'>
+                        Show Me The Schedule!
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="parallax"><img src="{{ STATIC_URL }}images/place_holders/hogs_baseball.jpg" alt="Unsplashed background img 3"></div>
+
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+
+            <div class="row">
+
+                <div class="col s12 center">
+
+                    <h3><i class="mdi-content-send brown-text"></i></h3>
+                    <h4>Contact Us</h4>
+
+                    <p class="left-align light">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque
+                        id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras
+                        ut
+                        ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem
+                        neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam,
+                        eu
+                        mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed
+                        ipsum
+                        ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante
+                        ipsum
+                        primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% if active_user %}
+    {% block user-actions %}
+
+        <span class='left'>
+            <a onclick='displayManageWindow("/admin/home_content/homesection/")'>sections</a>
+        </span>
+
+        <span class='left'>
+            <a onclick='displayManageWindow("/admin/home_content/billboard/")'>billboards</a>
+        </span>
+
+        <span class='left'>
+            <a onclick='displayManageWindow("/admin/home_content/minibillboard/")'>mini billboards</a>
+        </span>
+
+    {% endblock %}
+{% endif %}

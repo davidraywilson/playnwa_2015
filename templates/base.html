@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load front_tags %}
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>{% block title %}welcome{% endblock %} | playnwa</title>
+
+    <!-- CSS  -->
+    <link href="{{ STATIC_URL }}css/materialize/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="{{ STATIC_URL }}css/materialize/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href='{{ STATIC_URL }}css/front_overrides.css' type='text/css' rel='stylesheet'>
+    <link href='{{ STATIC_URL }}css/base.css' type='text/css' rel='stylesheet'>
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Plaster' rel='stylesheet' type='text/css'>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    {% block extra-head %}{% endblock %}
+
+    {% front_edit_scripts editor='ckeditor' %}
+
+</head>
+
+<body>
+
+<nav class="white" role="navigation">
+
+    <div class="nav-wrapper container">
+
+        <a id="logo-container" href="#" class="brand-logo deep-purple-text text-darken-1">
+{#            {% if logo %}#}
+{#                <img src='{{ logo.image }}' alt='{{ logo.alt_text }}'>#}
+{#            {% else %}#}
+                visitnwa
+{#            {% endif %}#}
+        </a>
+
+        <ul class="right">
+            <li><a href="#">Explore</a></li>
+            <li><a href="#">Hot Spots</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About Us</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Navbar Link</a></li>
+        </ul>
+
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+
+    </div>
+
+</nav>
+
+<div style='clear: both'></div>
+
+{% block content %}{% endblock %}
+
+<div style='clear: both'></div>
+
+<footer class="page-footer deep-purple darken-1">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col l6 s12">
+
+                {% front_edit 'footer-main-copy' django_front_key %}
+
+                    <h5 class="white-text">Company Bio</h5>
+
+                    <p class="grey-text text-lighten-4">
+                        We are a team of college students working on this project like it's
+                        our full time job. Any amount would help support and continue development on this project and is
+                        greatly appreciated.
+                    </p>
+
+                {% end_front_edit %}
+
+            </div>
+
+            <div class="col l3 s12">
+
+                <h5 class="white-text">Settings</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Link 1</a></li>
+                    <li><a class="white-text" href="#!">Link 2</a></li>
+                    <li><a class="white-text" href="#!">Link 3</a></li>
+                    <li><a class="white-text" href="#!">Link 4</a></li>
+                </ul>
+
+            </div>
+
+            <div class="col l3 s12">
+
+                <h5 class="white-text">Connect</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Link 1</a></li>
+                    <li><a class="white-text" href="#!">Link 2</a></li>
+                    <li><a class="white-text" href="#!">Link 3</a></li>
+                    <li><a class="white-text" href="#!">Link 4</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-copyright">
+
+        <div class="container">
+            {% front_edit 'footer-copyright-copy' django_front_key %}
+                <p>&copy; copyright 2015, playnwa, all rights reserved</p>
+            {% end_front_edit %}
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- USER ACTIONS -->
+{% if active_user %}
+    <div id='user-actions-wrapper' class='wrapper'>
+
+        <div id='ellipsis' onclick='toggleUserActions()'>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class='user-actions'>
+
+                <span class='left'>
+                    Welcome back, <a href='/admin/'>{{ active_user.username }}</a>
+                </span>
+
+                <span class='left logout'>
+                    <a href='/admin/logout/'>logout</a>
+                </span>
+
+        </div>
+
+        <div class='more-actions'>
+
+                <span class='left'>
+                    <a onclick='displayManageWindow("/admin/navigation/primarynavigation/")'>navigation</a>
+                </span>
+
+                <span class='left break'>
+                    <a onclick='displayManageWindow("/admin/page_content/webpage/")'>pages</a>
+                </span>
+
+            {% block user-actions %}{% endblock %}
+
+        </div>
+
+    </div>
+
+    <div id='user-manage-wrapper'>
+
+        <div id='mask' onclick='hideManageWindow()'></div>
+
+        <div id='user-manage-dialog'>
+
+            <div id='user-manage-content'></div>
+
+            <div class='clear-both'></div>
+
+            <div id='user-manage-buttons'>
+
+                <span class='btn left' onclick='hideManageWindow()'>Close</span>
+                <span class='btn left' onclick='saveManageWindow()'>Refresh Page</span>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endif %}
+<!-- END USER ACTIONS -->
+
+<!--  Scripts-->
+<script src="{{ STATIC_URL }}js/materialize/materialize.js"></script>
+<script src="{{ STATIC_URL }}js/materialize/init.js"></script>
+<script src="{{ STATIC_URL }}js/user_actions.js"></script>
+<script src="{{ STATIC_URL }}js/ckeditor/ckeditor.js"></script>
+
+</body>
+</html>

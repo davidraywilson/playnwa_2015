@@ -1,7 +1,63 @@
+/*========== COMMON CLASSES ==========*/
+.wrapper {
+    float: left;
+    clear: both;
+    width: 100%;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.no-float {
+    float: none !important;
+}
+
+.clear-both {
+    clear: both;
+}
+
+.section {
+    margin-bottom: 40px;
+    padding: 0 !important;
+}
+/*========== END COMMON CLASSES ==========*/
+
+
 nav .brand-logo {
     font-family: 'Plaster', cursive;
     font-size: 32px;
 }
+
+
+/*========== SIDE NAVIGATION ==========*/
+#side-nav {
+  padding-right: 0;
+}
+
+#side-nav ul {
+  float: left;
+  width: 100%;
+  list-style: none;
+}
+
+#side-nav ul li a {
+  display: block;
+  float: left;
+  width: 100%;
+  color: #454545;
+  padding: 10px 15px;
+}
+
+#side-nav ul li a.active {
+    color: #FFFFFF;
+    background-color: #666666;
+}
+/*========== END SIDE NAVIGATION ==========*/
 
 
 /*========== MAIN FEATURE ==========*/
@@ -9,9 +65,8 @@ nav .brand-logo {
     float: left;
     clear: both;
     width: 100%;
-    height: 650px;
+    height: 450px;
     color: #FFFFFF !important;
-    margin-bottom: 20px;
 }
 
 #main-feature h1 {

@@ -10,58 +10,74 @@
 
 {% block content %}
 
-    <div id='main-feature' class='parallax-container valign-wrapper'>
+    <div class='section'>
 
-        <div class="section no-pad-bot">
+        <div class='row'>
 
-            <div class="container">
+            <div class='col s12'>
 
-                <div class="row center">
-                    <h1 class="header col s12 light" style='margin-bottom: 40px;'>
-                        Your Adventure Starts Here
-                    </h1>
+                <div id='main-feature' class='parallax-container valign-wrapper'>
 
-                    <a href='/' class='btn-large waves-effect waves-light deep-purple accent-1 z-depth-5'>Get Started</a>
+                    <div class="section no-pad-bot">
+
+                        <div class="container">
+
+                            <div class="row center">
+                                <h1 class="header col s12 light" style='margin-bottom: 40px;'>
+                                    Your Adventure Starts Here
+                                </h1>
+
+                                <a href='/' class='btn-large waves-effect waves-light deep-purple accent-1 z-depth-5'>Get Started</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="parallax"><img src="{{ STATIC_URL }}images/place_holders/crystal_bridges.jpg" alt="Unsplashed background img 3"></div>
+
                 </div>
 
             </div>
 
         </div>
-
-        <div class="parallax"><img src="{{ STATIC_URL }}images/place_holders/crystal_bridges.jpg" alt="Unsplashed background img 3"></div>
 
     </div>
 
     <div style='clear: both'></div>
 
-    <div class="container">
+    <!--  STAFF PICKS  -->
+    <div class="section">
 
-        <div class="section">
+        <div class="row">
 
-            <!--   Icon Section   -->
-            <div class="row">
-                <div class="col s12 m4">
-                    <div class="icon-block">
-                        <h2 class="center">
-                            <a class='deep-purple-text text-darken-1' href='#'><i class="mdi-maps-local-restaurant"></i></a>
-                        </h2>
-                    </div>
+            <div class='col s12'>
+
+                <h3>Staff Picks</h3>
+
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block deep-purple darken-1 waves-effect waves-light">
+                    <h2 class="center">
+                        <a class='white-text' href='#'><i class="mdi-maps-local-restaurant"></i></a>
+                    </h2>
                 </div>
+            </div>
 
-                <div class="col s12 m4">
-                    <div class="icon-block">
-                        <h2 class="center">
-                            <a class='deep-purple-text text-darken-1' href='#'><i class="mdi-av-play-circle-fill"></i></a>
-                        </h2>
-                    </div>
+            <div class="col s12 m4">
+                <div class="icon-block deep-purple darken-1 waves-effect waves-light">
+                    <h2 class="center">
+                        <a class='white-text' href='#'><i class="mdi-av-play-circle-fill"></i></a>
+                    </h2>
                 </div>
+            </div>
 
-                <div class="col s12 m4">
-                    <div class="icon-block">
-                        <h2 class="center">
-                            <a class='deep-purple-text text-darken-1' href='#'><i class="mdi-maps-local-hotel"></i></a>
-                        </h2>
-                    </div>
+            <div class="col s12 m4">
+                <div class="icon-block deep-purple darken-1 waves-effect waves-light">
+                    <h2 class="center">
+                        <a class='white-text' href='#'><i class="mdi-maps-local-hotel"></i></a>
+                    </h2>
                 </div>
             </div>
 
@@ -69,31 +85,54 @@
 
     </div>
 
-    <div class="small-feature parallax-container valign-wrapper">
+    <!--  UPCOMING EVENTS  -->
+    <div class="section">
 
-        <div class="section no-pad-bot">
+        <div class="row">
 
-            <div class="container">
-                <div class="row center">
+            <div class='col s12'>
 
-                    <h2 class='center icon'><i class='mdi-social-whatshot'></i></h2>
-                    <h4 class="header col s12 light">
-                       Hogs baseball is finally here!
-                    </h4>
-                    <a href='/' class='btn waves-effect waves-light deep-purple accent-1 z-depth-5'>
-                        Show Me The Schedule!
-                    </a>
+                <h3>Upcoming Events</h3>
 
-                </div>
+            </div>
+
+            <div class="col s12 m3">
+                <a class='event-wrapper deep-purple darken-1 waves-effect waves-light' href='#'>
+                    <div class="event-block valign-wrapper">
+                        <h4 class='valign center white-text'>Ozark Mountain UFO Conference</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col s12 m3">
+                <a class='event-wrapper deep-purple darken-1 waves-effect waves-light' href='#'>
+                    <div class="event-block valign-wrapper">
+                        <h4 class='valign center white-text'>Hozier at the AMP</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col s12 m3">
+                <a class='event-wrapper deep-purple darken-1 waves-effect waves-light' href='#'>
+                    <div class="event-block valign-wrapper">
+                        <h4 class='valign center white-text'>Dave Matthews Band</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col s12 m3">
+                <a class='event-wrapper deep-purple darken-1 waves-effect waves-light' href='#'>
+                    <div class="event-block valign-wrapper">
+                        <h4 class='valign center white-text'>Evening in the Park</h4>
+                    </div>
+                </a>
             </div>
 
         </div>
 
-        <div class="parallax"><img src="{{ STATIC_URL }}images/place_holders/hogs_baseball.jpg" alt="Unsplashed background img 3"></div>
-
     </div>
 
-    <div class="container">
+    <!-- <div class="container">
 
         <div class="section">
 
@@ -124,7 +163,7 @@
 
         </div>
 
-    </div>
+    </div> -->
 
 {% endblock %}
 

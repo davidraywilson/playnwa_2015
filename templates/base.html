@@ -27,31 +27,17 @@
 
 <body>
 
-<nav class="white" role="navigation">
+<nav class='white'>
 
-    <div class="nav-wrapper container">
+    <div class='row'>
 
-        <a id="logo-container" href="#" class="brand-logo deep-purple-text text-darken-1">
-{#            {% if logo %}#}
-{#                <img src='{{ logo.image }}' alt='{{ logo.alt_text }}'>#}
-{#            {% else %}#}
-                visitnwa
-{#            {% endif %}#}
-        </a>
+        <div class='nav-wrapper col s12'>
 
-        <ul class="right">
-            <li><a href="#">Explore</a></li>
-            <li><a href="#">Hot Spots</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">About Us</a></li>
-        </ul>
+            <a id='logo-container' href='/' class='brand-logo deep-purple-text text-darken-1'>
+                playnwa
+            </a>
 
-        <ul id="nav-mobile" class="side-nav">
-            <li><a href="#">Navbar Link</a></li>
-        </ul>
-
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        </div>
 
     </div>
 
@@ -59,7 +45,32 @@
 
 <div style='clear: both'></div>
 
-{% block content %}{% endblock %}
+<div class='row'>
+
+    <div id='side-nav' class='col s12 m3 l2' role='navigation'>
+
+        <ul class='left'>
+            <li><a class='deep-purple accent-1 white-text' href="#">Home</a></li>
+            <li><a class='waves-effect waves-purple' href="#">Explore</a></li>
+            <li><a class='waves-effect waves-purple' href="#">Hot Spots</a></li>
+            <li><a class='waves-effect waves-purple' href="#">Events</a></li>
+            <li><a class='waves-effect waves-purple' href="#">Blog</a></li>
+            <li><a class='waves-effect waves-purple' href="#">About Us</a></li>
+        </ul>
+
+    </div>
+
+    <div class='col s12 m9 l10'>
+
+        <div class='row'>
+
+            {% block content %}{% endblock %}
+
+        </div>
+
+    </div>
+
+</div>
 
 <div style='clear: both'></div>
 
@@ -113,7 +124,7 @@
 
     </div>
 
-    <div class="footer-copyright">
+    <div class="footer-copyright deep-purple accent-1">
 
         <div class="container">
             {% front_edit 'footer-copyright-copy' django_front_key %}

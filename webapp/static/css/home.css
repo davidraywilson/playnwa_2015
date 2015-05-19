@@ -1,8 +1,53 @@
+.section h3 {
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 1em;
+    margin: 0 0 10px 0;
+}
+
+
+/*========== ICON BLOCKS ==========*/
+.icon-block {
+    float: left;
+    width: 100%;
+}
+
+.icon-block h2,
 .icon-block h2 a i {
     font-size: 8rem;
+}
+
+.icon-block h2 {
+    line-height: 8rem;
+}
+
+.icon-block h2 a {
+    display: block;
 }
 
 .icon-block h5 {
     font-size: 1.8rem;
     font-weight: 500;
 }
+/*========== END ICON BLOCKS ==========*/
+
+
+/*========== EVENT BLOCKS ==========*/
+.event-wrapper {
+    float: left;
+    width: 100%;
+}
+
+.event-block {
+    height: 200px;
+    padding: 20px;
+}
+
+.event-block h4 {
+    display: block;
+    font-size: 26px;
+    font-weight: 100;
+    margin: 0;
+    vertical-align: middle;
+}
+/*========== END EVENT BLOCKS ==========*/

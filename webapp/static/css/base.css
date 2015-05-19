@@ -39,6 +39,11 @@ nav .brand-logo {
   padding-right: 0;
 }
 
+#side-nav #logo-container {
+    width: 80%;
+    margin: 10px auto 0 auto;
+}
+
 #side-nav ul {
   float: left;
   width: 100%;
@@ -97,3 +102,12 @@ nav .brand-logo {
     margin-bottom: 40px;
 }
 /*========== END MAIN FEATURE ==========*/
+
+
+/*========== FOOTER ==========*/
+.page-footer .footer-copyright {
+    height: auto !important;
+    line-height: 1em !important;
+    padding: 10px 0;
+}
+/*========== END FOOTER ==========*/

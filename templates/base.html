@@ -27,27 +27,17 @@
 
 <body>
 
-<nav class='white'>
-
-    <div class='row'>
-
-        <div class='nav-wrapper col s12'>
-
-            <a id='logo-container' href='/' class='brand-logo deep-purple-text text-darken-1'>
-                playnwa
-            </a>
-
-        </div>
-
-    </div>
-
-</nav>
-
 <div style='clear: both'></div>
 
 <div class='row'>
 
     <div id='side-nav' class='col s12 m3 l2' role='navigation'>
+
+        <div id='logo-container'>
+            <a href='/' class='brand-logo deep-purple-text text-darken-1'>
+                <img src='{{ STATIC_URL }}images/royal_circle_icon.jpg' width='100%'/>
+            </a>
+        </div>
 
         <ul class='left'>
             <li><a class='deep-purple accent-1 white-text' href="#">Home</a></li>
@@ -124,7 +114,7 @@
 
     </div>
 
-    <div class="footer-copyright deep-purple accent-1">
+    <div class="footer-copyright deep-purple darken-4">
 
         <div class="container">
             {% front_edit 'footer-copyright-copy' django_front_key %}

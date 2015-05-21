@@ -1,43 +1,36 @@
-var action_menu_status = 'open';
+var action_menu_status = 'closed';
+
+// CLOSE USER ACTIONS ON PAGE LOAD
+$(window).ready(function() {
+    var menu_wrap = $('#user-actions-menu');
+    var app_wrap = $('#user-actions-menu #all-apps');
+    var wrap_bottom = '-' + $(app_wrap).height() - 80;
+    $(menu_wrap).animate({bottom: wrap_bottom}, 300);
+    var action_menu_status = 'closed';
+});
 
 function toggleUserActions() {
 
-    var menu_wrap = $('#user-actions-wrapper');
+    var menu_wrap = $('#user-actions-menu');
 
     if (action_menu_status == 'closed') {
 
-        $(menu_wrap).animate({bottom: '0'}, 300);
+        $(menu_wrap).animate({bottom: 0}, 300);
         action_menu_status = 'open'
 
     }
 
     else {
 
-        var wrap_bottom = '-' + $(menu_wrap).height() - 30;
+        var menu_wrap = $('#user-actions-menu');
+        var app_wrap = $('#user-actions-menu #all-apps');
+        var wrap_bottom = '-' + $(app_wrap).height() - 80;
         $(menu_wrap).animate({bottom: wrap_bottom}, 300);
         action_menu_status = 'closed'
 
     }
 
 }
-
-
-//function initiateManageWindow(template) {
-//
-//    var postData = {'template': template};
-//    var url = '/ajax/user-actions/';
-//
-//    var params = {
-//        type: 'POST',
-//        data: postData,
-//        url: url
-//    };
-//
-//    $.ajax(params)
-//        .success(displayManageWindow)
-//        .error(ajaxError);
-//
-//}
 
 
 function displayManageWindow(link) {

@@ -1,0 +1,293 @@
+{% extends 'base.html' %}
+{% load front_tags %}
+
+
+{% block page-title %}
+    {% if page.meta_title %}{{ page.meta_title }}{% else %}{{ page.label }}{% endif %}
+{% endblock %}
+
+
+{% block extra-head %}
+
+    <link type='text/css' rel='stylesheet' href='{{ STATIC_URL }}chosen_1_4_2/chosen.css'>
+    <link type='text/css' rel='stylesheet' href='/static/css/detail.css'>
+
+    <script type='text/javascript' src='{{ STATIC_URL }}chosen_1_4_2/chosen.jquery.min.js'></script>
+    <script type='text/javascript'>
+
+        $(document).ready(function () {
+
+            // ATTACH CHOSEN TO ALL SELECT ELEMENTS
+            $('select').chosen({
+                search_contains: true,
+            });
+
+        });
+
+    </script>
+
+    {% front_edit_scripts editor='ckeditor' %}
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div id='cover-image' class='wrapper{% if not page.image_cover %} no-image{% endif %}'{% if page.image_cover %} style='background-image: url("{{ page.image_cover }}")'{% endif %}>
+        <div class='cover-gradient'></div>
+    </div>
+
+    <div id='sections' class='content-gutter wrapper'>
+
+        {% block template_override_content %}{% endblock %}
+
+        <div id='page-sections'>
+
+            {% for section in page.sections %}
+
+                <div id='{{ section.anchor_tag }}' class='section-wrapper wrapper {% ifequal section.template '3_col' %}three-col{% endifequal %}' {% if section.image_background %}style='background: url("{{ section.image_background }}")'{% endif %}>
+
+                    <div class='container'>
+
+                        <div class='row'>
+
+                            {% ifequal section.template '1_col' %}
+
+                                <div class='hidden-xs col-sm-1'></div>
+
+                                <div class='one-col col-xs-12 col-sm-10'>
+
+                                    {% front_edit 'section-wide-col' django_front_key section.id %}
+
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                            laboris nisi ut aliquip ex ea commodo consequat.
+                                        </p>
+
+                                    {% end_front_edit %}
+
+                                    <div class='clearfix'></div>
+
+                                </div>
+
+                                <div class='hidden-xs col-sm-1'></div>
+
+                            {% endifequal %}
+
+                            {% ifequal section.template '1_col_center' %}
+
+                                {% if section.border %}
+                                    <div class='gutter'>
+
+                                        <div class='gutter'>
+
+                                            <div class='border-div col-xs-12' style='border: {{ section.border }}'>
+
+                                                <div class='row'>
+                                                {% endif %}
+
+                                                    <div class='hidden-xs col-sm-1'></div>
+
+                                                    <div class='one-col-center col-xs-12 col-sm-10'>
+
+                                                        {% if section.slide_show %}
+                                                            <div class="galleria">
+                                                                {% for item in section.slide_show.images %}
+                                                                    <img src='{{ item.image }}'>
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% endif %}
+
+                                                        {% front_edit 'section-wide-col' django_front_key section.id %}
+
+                                                            <p>
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                                                laboris nisi ut aliquip ex ea commodo consequat.
+                                                            </p>
+
+                                                        {% end_front_edit %}
+
+                                                        <div class='clearfix'></div>
+
+                                                    </div>
+
+                                                    <div class='hidden-xs col-sm-1'></div>
+
+                                        {% if section.border %}
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                {% endif %}
+
+                            {% endifequal %}
+
+                            {% ifequal section.template 'break' %}
+
+                                <div class='divider col-xs-12'>
+
+                                    <div></div>
+
+                                </div>
+
+                            {% endifequal %}
+
+                            {% ifequal section.template '2_col_left' %}
+                                <div class='left-col-wide col-xs-12 col-sm-7 col-md-8'>
+
+                                    {% if section.slide_show %}
+                                        <div class="galleria">
+
+                                            {% for item in section.slide_show.images %}
+                                                <img src='{{ item.image }}'>
+                                            {% endfor %}
+
+                                        </div>
+                                    {% endif %}
+
+                                    {% front_edit 'section-left-col-wide' django_front_key section.id %}
+
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </p>
+
+                                    {% end_front_edit %}
+
+                                    <div class='clearfix'></div>
+
+                                </div>
+
+                                <div class='right-col-skinny col-xs-12 col-sm-5 col-md-4'>
+
+                                    {% front_edit 'section-right-col-skinny' django_front_key section.id %}
+
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                            laboris nisi ut aliquip ex ea commodo consequat.
+                                        </p>
+
+                                    {% end_front_edit %}
+
+                                </div>
+                            {% endifequal %}
+
+                            {% ifequal section.template '2_col_right' %}
+                                <div class='left-col-skinny col-xs-12 col-sm-5 col-md-4'>
+
+                                    {% front_edit 'section-left-col-skinny' django_front_key section.id %}
+
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                            laboris nisi ut aliquip ex ea commodo consequat.
+                                        </p>
+
+                                    {% end_front_edit %}
+
+                                    <div class='clearfix'></div>
+
+                                </div>
+
+                                <div class='right-col-wide col-xs-12 col-sm-7 col-md-8'>
+
+                                    {% front_edit 'section-right-col-wide' django_front_key section.id %}
+
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </p>
+
+                                    {% end_front_edit %}
+
+                                </div>
+                            {% endifequal %}
+
+                            {% ifequal section.template '3_col' %}
+                                <div class=' col-xs-12 col-sm-4'>
+
+                                    {% front_edit 'section-three-col-1' django_front_key section.id %}
+
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                            laboris nisi ut aliquip ex ea commodo consequat.
+                                        </p>
+
+                                    {% end_front_edit %}
+
+                                    <div class='clearfix'></div>
+
+                                </div>
+
+                                <div class='col-xs-12 col-sm-4'>
+
+                                    {% front_edit 'section-three-col-2' django_front_key section.id %}
+
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </p>
+
+                                    {% end_front_edit %}
+
+                                </div>
+
+                                <div class='col-xs-12 col-sm-4'>
+
+                                    {% front_edit 'section-three-col-3' django_front_key section.id %}
+
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </p>
+
+                                    {% end_front_edit %}
+
+                                </div>
+                            {% endifequal %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% block template_override_bottom_content %}{% endblock %}
+
+    </div>
+
+{% endblock %}
+
+
+{% if active_user %}
+    {% block user-actions %}
+
+        <span class='left'>
+            <a onclick='displayManageWindow("/admin/page_content/webpage/{{ page.id }}/")'>edit page</a>
+        </span>
+
+    {% endblock %}
+{% endif %}

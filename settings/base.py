@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'reversion',
     'classytags',
     'front',
+    'mptt',
     # My Applications
     'contact',
     'home_content',

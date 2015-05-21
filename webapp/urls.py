@@ -26,8 +26,14 @@ if settings.DEVELOPMENT:
         url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     )
 
+# EDIT FOR DYNAMIC PAGE
 urlpatterns += patterns(
     'page_content.views',
-    url(r'^edit/(?P<a_slug>.*)$', 'edit_web_page'),
-    url(r'^(?P<a_slug>.*)$', 'view_web_page'),
+    url(r'^edit/(?P<a_slug>.*)$', 'view_web_page'),
+)
+
+# NAVIGATION & PAGES
+urlpatterns += patterns(
+    'navigation.views',
+    url(r'^.+/', 'default'),  # '^.+/' PRESERVES DJANGO'S APPEND_SLASH FEATURE
 )

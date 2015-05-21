@@ -29,23 +29,33 @@
 
 <div style='clear: both'></div>
 
-<div class='row'>
+<div id='header-wrapper' class='row wrapper'>
 
-    <div id='side-nav' class='col s12 m3 l2' role='navigation'>
+    <div id='header' class='col s12'>
 
-        <div id='logo-container'>
+        <div id='brand-logo'>
             <a href='/' class='brand-logo deep-purple-text text-darken-1'>
-                <img src='{{ STATIC_URL }}images/royal_circle_icon.jpg' width='100%'/>
+                playnwa
+                <!-- <img src='{{ STATIC_URL }}images/royal_circle_icon.jpg' width='100%'/> -->
             </a>
         </div>
 
+    </div>
+
+</div>
+
+<div id='content-wrapper' class='row'>
+
+    <div id='side-nav' class='col s12 m3 l2' role='navigation'>
+
         <ul class='left'>
             <li><a class='deep-purple accent-1 white-text' href="#">Home</a></li>
-            <li><a class='waves-effect waves-purple' href="#">Explore</a></li>
-            <li><a class='waves-effect waves-purple' href="#">Hot Spots</a></li>
-            <li><a class='waves-effect waves-purple' href="#">Events</a></li>
-            <li><a class='waves-effect waves-purple' href="#">Blog</a></li>
-            <li><a class='waves-effect waves-purple' href="#">About Us</a></li>
+
+            {% for item in nav_links %}
+                <li>
+                    <a class='waves-effect waves-purple' href='{{ item.url }}'>{{ item.title }}</a>
+                </li>
+            {% endfor %}
         </ul>
 
     </div>

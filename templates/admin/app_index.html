@@ -9,15 +9,15 @@
 {% if not is_popup %}
     {% block breadcrumbs %}
 
-{#        <ul class="breadcrumb">#}
-{##}
-{#            {% for app in app_list %}#}
-{#                <li class="active">#}
-{#                    Applications#}
-{#                </li>#}
-{#            {% endfor %}#}
-{##}
-{#        </ul>#}
+        <ul class="breadcrumb">
+
+            {% for app in app_list %}
+                <li class="active">
+                    Applications
+                </li>
+            {% endfor %}
+
+        </ul>
 
     {% endblock %}
 {% endif %}

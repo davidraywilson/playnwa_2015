@@ -28,13 +28,26 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
-	config.removeButtons = 'Underline,Subscript,Superscript';
 
 	// Set the most common block elements.
-	config.format_tags = 'p;h1;h2;h3;pre';
+	config.format_tags = 'p;h1;h2;h3;h4;h5;pre';
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 
+	config.extraPlugins = 'justify';
+
     config.allowedContent = true;
+
+    config.stylesSet = [
+		{ name: 'float left', element: 'p', attributes: {'class': 'left'} },
+        { name: 'info button', element: 'a', attributes: {'class': 'btn info'} },
+		{ name: 'action button', element: 'a', attributes: {'class': 'btn action'} },
+		{ name: 'info hollow button', element: 'a', attributes: {'class': 'hollow-btn info'} },
+		{ name: 'action hollow button', element: 'a', attributes: {'class': 'hollow-btn action'} },
+        { name: 'large p', element: 'p', attributes: {'class': 'large'} },
+		{ name: 'large p info', element: 'p', attributes: {'class': 'large info'} },
+		{ name: 'large p action', element: 'p', attributes: {'class': 'large action'} },
+		{ name: 'page-title', element: 'p', attributes: {'class': 'page-title'} },
+    ];
 };

@@ -1,64 +1,35 @@
 from django.contrib import admin
+
 from models import *
+from mptt.admin import MPTTModelAdmin
 
 
-class InlineSubNav(admin.TabularInline):
-    model = SubPrimaryNavigation
-    sortable_field_name = "order"
-    exclude = ('link_type',)
-
-
-class PrimaryNavigationAdmin(admin.ModelAdmin):
-    list_display = ('title', 'is_published', 'order')
-    list_editable = ('is_published', 'order')
-
-    search_fields = ('title',)
-    save_as = True
-
-    inlines = [
-        InlineSubNav,
-    ]
-
-    fieldsets = (
-
-        (None, {
-            'classes': (),
-            'fields': (
-                'title', 'link_type', 'page', 'category', 'link', 'is_published', 'order'
-            )
-        }),
-
-    )
-
-    class Media:
-        js = [
-            '/static/admin_js/custom/navigation.js',
-        ]
-
-
-class SubPrimaryNavigationAdmin(admin.ModelAdmin):
-    list_display = ('title', 'parent', 'is_published', 'order')
+class PrimaryNavigationAdmin(MPTTModelAdmin):
+    list_display = ('title', 'is_published', 'order', 'url_search_target')
     list_editable = ('is_published', 'order')
 
     search_fields = ('title',)
     save_as = True
 
     fieldsets = (
-
         (None, {
-            'classes': (),
+            'classes': ('full-width',),
             'fields': (
-                'parent', 'title', 'link_type', 'page', 'category', 'link', 'is_published', 'order'
+                'parent', 'title', 'link_type', 'page', 'link', 'is_published', 'order'
             )
         }),
-
     )
 
     class Media:
         js = [
-            '/static/admin_js/custom/navigation.js',
+            '/static/navigation/admin/navigation.js',
         ]
+
+
+class UrlRedirect_Admin(admin.ModelAdmin):
+    model = UrlRedirect
+    list_display = ('from_url', 'to_url')
 
 
 admin.site.register(PrimaryNavigation, PrimaryNavigationAdmin)
-admin.site.register(SubPrimaryNavigation, SubPrimaryNavigationAdmin)
+admin.site.register(UrlRedirect, UrlRedirect_Admin)

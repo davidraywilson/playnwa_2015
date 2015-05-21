@@ -28,9 +28,37 @@
 /*========== END COMMON CLASSES ==========*/
 
 
-nav .brand-logo {
+/*========== HEADER ==========*/
+#header-wrapper {
+    position: fixed;
+    z-index: 10;
+    height: 50px;
+    margin: 0;
+    padding: 10px 0;
+    background-color: #FFFFFF;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+#header-wrapper #logo-container {
+    width: 150px;
+}
+
+#header-wrapper #logo-container img {
+    width: 100%;
+}
+
+#header-wrapper #brand-logo {
     font-family: 'Plaster', cursive;
     font-size: 32px;
+    line-height: 1em;
+}
+/*========== END HEADER ==========*/
+
+
+#content-wrapper {
+    padding-top: 50px;
 }
 
 

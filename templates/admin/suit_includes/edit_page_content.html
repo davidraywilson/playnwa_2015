@@ -1,11 +1,24 @@
 <div class='clear-both'></div>
 
 {% if change and not is_popup %}
+    <script type='text/javascript'>
+
+        function open_content_edit() {
+
+            var a_slug = $('#id_slug').val();
+            var go_to_url = '/edit/' + a_slug
+
+            window.open(go_to_url, '_blank');
+
+        }
+
+    </script>
+
     <div class='custom-admin-section'>
 
-        <a class='custom-link' href='/edit/{{ object_id }}'>
+        <div id='edit-content-link' class='custom-link' onclick='open_content_edit()'>
             <i class="icon-pencil icon-alpha85" style='margin-top: 3px; margin-right: 5px;'></i> Preview and Edit Page
-        </a>
+        </div>
 
         <div style='clear: both'></div>
 

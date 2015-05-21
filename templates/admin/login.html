@@ -55,7 +55,7 @@
 
         <div id="content-main">
 
-            <h1>{{ 'ADMIN_NAME'|suit_conf }}</h1>
+            <h1>{{ 'ADMIN_NAME'|suit_conf }}{% if admin_id %} <span>{{ admin_id }}</span>{% endif %}</h1>
 
             <form action="{{ app_path }}" method="post" id="login-form">
                 <div class="hide">{% csrf_token %}</div>
@@ -80,8 +80,8 @@
                     </div>
                 {% endif %}
                 <div class="submit-row">
-                    <input type='image' src='/static/images/suit_overrides/login_arrow.png'>
-{#                    <input type="submit" value="{% trans 'sign in' %}" class="btn btn-info"/>#}
+                    <!-- <input type='image' src='/static/images/suit_overrides/login_arrow.png'> -->
+                    <input type="submit" value="{% trans 'sign in' %}" class="btn btn-info"/>
                 </div>
             </form>
 

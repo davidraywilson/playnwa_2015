@@ -1,18 +1,7 @@
+import logging
+from django.contrib.sites.models import Site
 from django.contrib import admin
 from page_content.models import *
-
-
-class LogoAdmin(admin.ModelAdmin):
-    list_display = ('label',)
-    readonly_fields = ('site',)
-
-    fieldsets = (
-        (None, {
-            'classes': ('full-width',),
-            'fields': ('site', 'label', 'image')
-        }),
-
-    )
 
 
 class PageSectionInline(admin.TabularInline):
@@ -55,46 +44,23 @@ class WebPageAdmin(admin.ModelAdmin):
 
     suit_form_tabs = (('general', 'General'), ('seo', 'SEO'))
 
-    class Media:
-        js = [
-            '/static/admin_js/tinymce/tinymce.min.js',
-            '/static/admin_js/tinymce_init.js'
-        ]
+    def queryset(self, request):
+        # ONLY SHOW OBJECTS FOR CURRENT SITE
+		qs = super(WebPageAdmin, self).queryset(request)
+
+		try:
+		    # GET CURRENT SITE
+		    current_site = Site.objects.get_current()
+
+		except Exception, e:
+		    logging.error(e)
+		    current_site = None
+
+		if current_site:
+			return qs.filter(site=current_site)
+
+		else:
+			return qs
 
 
-class SocialLinkInline(admin.TabularInline):
-    model = FooterSocialLink
-    sortable_field_name = 'order'
-    extra = 1
-
-
-class FooterAdmin(admin.ModelAdmin):
-    list_display = ('label',)
-    readonly_fields = ('site',)
-
-    fieldsets = (
-        (None, {
-            'classes': ('full-width',),
-            'fields': ('site', 'label')
-        }),
-
-    )
-
-    inlines = [
-        SocialLinkInline,
-    ]
-
-    suit_form_includes = (
-        ('admin/suit_includes/edit_footer_content.html', 'bottom', 'general'),
-    )
-
-    class Media:
-        js = [
-            '/static/admin_js/tinymce/tinymce.min.js',
-            '/static/admin_js/tinymce_init.js'
-        ]
-
-
-admin.site.register(Logo, LogoAdmin)
 admin.site.register(WebPage, WebPageAdmin)
-admin.site.register(Footer, FooterAdmin)
